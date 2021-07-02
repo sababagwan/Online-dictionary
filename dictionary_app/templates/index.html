@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Dictionary</title>
+  </head>
+  <body>
+    Working home page<br>
+    <h4>Enter new entries here</h4>
+
+    <form action="{% url 'home' %}" method="post"><br>
+      {% csrf_token %}
+      <input type="text" name="letter" placeholder="letter"><br>
+      <input type="text" name="word" placeholder="word"><br>
+      <input type="text" namede="definition" placeholder="definition"><br>
+      <input type="text" name="example" placeholder="example"><br>
+      <input type="submit" value="Submit">
+    </form>
+    <br>
+  <h1>Dictionary Entries</h1>
+  {% for letter in all_letters %}
+    <a href="{% url 'posts' letter.letter %}"><p>{{letter.letter}}</p></a>
+  {% endfor %}
+  </body>
+</html>
